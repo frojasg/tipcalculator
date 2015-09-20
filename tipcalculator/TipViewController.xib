@@ -60,13 +60,16 @@
                         <segment title="20%"/>
                     </segments>
                     <connections>
-                        <action selector="onTap:" destination="-1" eventType="valueChanged" id="VJa-L2-lBu"/>
+                        <action selector="onUpdate:" destination="-1" eventType="valueChanged" id="LIw-EU-Jr1"/>
                     </connections>
                 </segmentedControl>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gv7-vs-dMq">
                     <rect key="frame" x="215" y="100" width="97" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
+                    <connections>
+                        <action selector="onUpdate:" destination="-1" eventType="editingChanged" id="9sU-n3-mb6"/>
+                    </connections>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,7 +81,7 @@
         </view>
         <tapGestureRecognizer id="38X-q4-mLL">
             <connections>
-                <action selector="onTap:" destination="-1" id="HdE-YU-Yfr"/>
+                <action selector="onUpdate:" destination="-1" id="Ct6-ll-DVh"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

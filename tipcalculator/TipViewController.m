@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipController;
-- (IBAction)onTap:(id)sender;
+- (IBAction)onUpdate:(id)sender;
 - (void) updateValues;
 
 @end
@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Tip Caculator";
+    [self.billTextField becomeFirstResponder];
     [self updateValues];
     // Do any additional setup after loading the view from its nib.
 }
@@ -44,8 +45,7 @@
 }
 */
 
-- (IBAction)onTap:(id)sender {
-    [self.view endEditing:YES];
+- (IBAction)onUpdate:(id)sender {
     [self updateValues];
 }
 
