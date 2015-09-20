@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipController;
 - (IBAction)onUpdate:(id)sender;
 - (void) updateValues;
-
+- (float) getTipPercentage;
 @end
 
 @implementation TipViewController
@@ -52,12 +52,17 @@
 - (void) updateValues {
     float billAmount = [self.billTextField.text floatValue];
     
-    NSArray *tipValues = @[@(0.01), @(0.15), @(0.2)];
-    float tipAmount = billAmount * [tipValues[self.tipController.selectedSegmentIndex] floatValue];
+    float tipAmount = billAmount * [self getTipPercentage];
     float totalAmount = tipAmount + billAmount;
     
     self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", tipAmount];
     self.totalLabel.text = [NSString stringWithFormat: @"$%.2f", totalAmount];
     
 }
+
+- (float) getTipPercentage {
+    NSArray *tipValues = @[@(0.01), @(0.15), @(0.2)];
+    return [tipValues[self.tipController.selectedSegmentIndex] floatValue];
+}
+
 @end
