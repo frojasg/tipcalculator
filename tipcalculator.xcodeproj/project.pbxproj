@@ -15,6 +15,7 @@
 		BF979D4F1BAF4F3A0030F8C8 /* tipcalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF979D4E1BAF4F3A0030F8C8 /* tipcalculatorTests.m */; };
 		BF979D5B1BAF59580030F8C8 /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF979D591BAF59580030F8C8 /* TipViewController.m */; };
 		BF979D5C1BAF59580030F8C8 /* TipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF979D5A1BAF59580030F8C8 /* TipViewController.xib */; };
+		BFDC55E21BB12E0B006F57B1 /* UserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDC55E11BB12E0B006F57B1 /* UserPreferences.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		BF979D581BAF59580030F8C8 /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
 		BF979D591BAF59580030F8C8 /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
 		BF979D5A1BAF59580030F8C8 /* TipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipViewController.xib; sourceTree = "<group>"; };
+		BFDC55E01BB12E0B006F57B1 /* UserPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferences.h; sourceTree = "<group>"; };
+		BFDC55E11BB12E0B006F57B1 /* UserPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferences.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				BF979D581BAF59580030F8C8 /* TipViewController.h */,
 				BF979D591BAF59580030F8C8 /* TipViewController.m */,
 				BF979D5A1BAF59580030F8C8 /* TipViewController.xib */,
+				BFDC55E01BB12E0B006F57B1 /* UserPreferences.h */,
+				BFDC55E11BB12E0B006F57B1 /* UserPreferences.m */,
 			);
 			path = tipcalculator;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF979D381BAF4F3A0030F8C8 /* AppDelegate.m in Sources */,
+				BFDC55E21BB12E0B006F57B1 /* UserPreferences.m in Sources */,
 				BF979D5B1BAF59580030F8C8 /* TipViewController.m in Sources */,
 				BF979D351BAF4F3A0030F8C8 /* main.m in Sources */,
 			);
@@ -422,6 +428,7 @@
 				BF979D541BAF4F3A0030F8C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF979D551BAF4F3A0030F8C8 /* Build configuration list for PBXNativeTarget "tipcalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +437,7 @@
 				BF979D571BAF4F3A0030F8C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
