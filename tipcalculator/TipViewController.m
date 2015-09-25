@@ -7,6 +7,7 @@
 //
 
 #import "TipViewController.h"
+#import "UserPreferences.h"
 
 @interface TipViewController ()
 
@@ -21,12 +22,16 @@
 @end
 
 @implementation TipViewController
+{
+    UserPreferences *preference;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Tip Caculator";
     [self.billTextField becomeFirstResponder];
-    [self updateValues];
+    preference = [UserPreferences new];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -50,7 +55,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"view will appear");
+    [self updateValues];
+    [self.tipController setTitle:[NSString stringWithFormat:@"%ld%@", [preference getLowTip], @"%"] forSegmentAtIndex: 0];
+    [self.tipController setTitle:[NSString stringWithFormat:@"%ld%@", [preference getMediumTip], @"%"] forSegmentAtIndex: 1];
+    [self.tipController setTitle:[NSString stringWithFormat:@"%ld%@", [preference getHighTip], @"%"] forSegmentAtIndex: 2];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -77,8 +85,8 @@
 }
 
 - (float) getTipPercentage {
-    NSArray *tipValues = @[@(0.01), @(0.15), @(0.2)];
-    return [tipValues[self.tipController.selectedSegmentIndex] floatValue];
+    NSArray *tipValues = @[@([preference getLowTip]), @([preference getMediumTip]), @([preference getHighTip])];
+    return [tipValues[self.tipController.selectedSegmentIndex] floatValue]/100;
 }
 
 @end

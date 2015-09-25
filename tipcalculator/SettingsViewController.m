@@ -2,26 +2,71 @@
 //  SettingsViewController.m
 //  tipcalculator
 //
-//  Created by Francisco Rojas Gallegos on 9/21/15.
+//  Created by Francisco Rojas Gallegos on 9/22/15.
 //  Copyright (c) 2015 Rita Miller desgins. All rights reserved.
 //
 
 #import "SettingsViewController.h"
+#import "UserPreferences.h"
 
 @interface SettingsViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *lowTipTextField;
+@property (weak, nonatomic) IBOutlet UITextField *mediumTipTextField;
+@property (weak, nonatomic) IBOutlet UITextField *highTipTextField;
+- (IBAction)onTap:(id)sender;
+- (void) updateValues;
 
 @end
 
 @implementation SettingsViewController
+{
+    UserPreferences *preference;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"view will appear");
+
+    self.lowTipTextField.text = [[NSNumber numberWithInteger:[preference getLowTip]] stringValue];
+    self.mediumTipTextField.text = [[NSNumber numberWithInteger:[preference getMediumTip]] stringValue];
+    self.highTipTextField.text = [[NSNumber numberWithInteger:[preference getHighTip]] stringValue];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"view did appear");
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self updateValues];
+    NSLog(@"view will disappear");
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    NSLog(@"view did disappear");
+}
+
+- (void)updateValues {
+
+    [preference setLowTip: [self.lowTipTextField.text integerValue]];
+    [preference setMediumTip: [self.mediumTipTextField.text integerValue]];
+    [preference setHighTip: [self.highTipTextField.text integerValue]];
+    [preference commit];
+}
+
+- (IBAction)onTap:(id)sender {
+    NSLog(@"tap!");
+    [self updateValues];
+    [self.view endEditing:(YES)];
 }
 
 /*

@@ -10,38 +10,48 @@
 
 @implementation UserPreferences
 {
-    float min;
-    
+    NSUserDefaults *standardUserDefaults;
 }
 
 - (id) init {
     self = [super init];
     if (self)
     {
-        NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+        standardUserDefaults = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
 
 - (NSInteger) getLowTip {
-    NSInteger val = 10;
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger val;
     val = [standardUserDefaults integerForKey:@"lowTipValue"];
-    return val;
+    return val == 0 ? 10 : val;
 }
 
 - (NSInteger) getMediumTip {
-    NSInteger val = 15;
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger val;
     val = [standardUserDefaults integerForKey:@"mediumTipValue"];
-    return val;
+    return val == 0 ? 15 : val;
 }
 
 - (NSInteger) getHighTip {
-    NSInteger val = 20;
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger val;
     val = [standardUserDefaults integerForKey:@"highTipValue"];
-    return val;
+    return val == 0 ? 15 : val;
+}
+
+-(void) setLowTip: (NSInteger) lowTip {
+    [standardUserDefaults setInteger: lowTip forKey: @"lowTipValue"];
+}
+-(void) setMediumTip: (NSInteger) mediumTip {
+    [standardUserDefaults setInteger: mediumTip forKey: @"mediumTipValue"];
+}
+-(void) setHighTip: (NSInteger) highTip {
+    [standardUserDefaults setInteger: highTip forKey: @"highTipValue"];
+}
+
+-(void) commit {
+    [standardUserDefaults synchronize];
 }
 
 

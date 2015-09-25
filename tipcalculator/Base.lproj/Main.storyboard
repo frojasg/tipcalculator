@@ -114,7 +114,7 @@
         <!--Settings-->
         <scene sceneID="Dob-7n-pE8">
             <objects>
-                <viewController id="Pap-cl-PUv" sceneMemberID="viewController">
+                <viewController id="Pap-cl-PUv" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CKW-25-EEe"/>
                         <viewControllerLayoutGuide type="bottom" id="c36-Ot-k7D"/>
@@ -141,27 +141,41 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10%" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="war-2s-bid">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="war-2s-bid">
                                 <rect key="frame" x="207" y="119" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15%" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AvZ-tL-qeM">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AvZ-tL-qeM">
                                 <rect key="frame" x="207" y="170" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20%" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ohe-1t-Cll">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ohe-1t-Cll">
                                 <rect key="frame" x="207" y="217" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="p1B-fs-vQa" appends="YES" id="mWE-BJ-man"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="WZf-Wg-lsv"/>
+                    <connections>
+                        <outlet property="highTipTextField" destination="ohe-1t-Cll" id="cYV-9h-dfL"/>
+                        <outlet property="lowTipTextField" destination="war-2s-bid" id="sX4-vq-y2P"/>
+                        <outlet property="mediumTipTextField" destination="AvZ-tL-qeM" id="NiE-91-kg9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGt-OZ-Jui" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="p1B-fs-vQa">
+                    <connections>
+                        <action selector="onTap:" destination="Pap-cl-PUv" id="Yvx-QA-gxU"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-968" y="1176"/>
         </scene>

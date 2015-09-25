@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF6AE2261BB25621009AEBB0 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6AE2251BB25621009AEBB0 /* SettingsViewController.m */; };
 		BF979D351BAF4F3A0030F8C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF979D341BAF4F3A0030F8C8 /* main.m */; };
 		BF979D381BAF4F3A0030F8C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF979D371BAF4F3A0030F8C8 /* AppDelegate.m */; };
 		BF979D3E1BAF4F3A0030F8C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF979D3C1BAF4F3A0030F8C8 /* Main.storyboard */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF6AE2241BB25621009AEBB0 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		BF6AE2251BB25621009AEBB0 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		BF979D2F1BAF4F3A0030F8C8 /* tipcalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipcalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF979D331BAF4F3A0030F8C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF979D341BAF4F3A0030F8C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				BF979D5A1BAF59580030F8C8 /* TipViewController.xib */,
 				BFDC55E01BB12E0B006F57B1 /* UserPreferences.h */,
 				BFDC55E11BB12E0B006F57B1 /* UserPreferences.m */,
+				BF6AE2241BB25621009AEBB0 /* SettingsViewController.h */,
+				BF6AE2251BB25621009AEBB0 /* SettingsViewController.m */,
 			);
 			path = tipcalculator;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 			files = (
 				BF979D381BAF4F3A0030F8C8 /* AppDelegate.m in Sources */,
 				BFDC55E21BB12E0B006F57B1 /* UserPreferences.m in Sources */,
+				BF6AE2261BB25621009AEBB0 /* SettingsViewController.m in Sources */,
 				BF979D5B1BAF59580030F8C8 /* TipViewController.m in Sources */,
 				BF979D351BAF4F3A0030F8C8 /* main.m in Sources */,
 			);

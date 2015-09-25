@@ -10,4 +10,12 @@
 
 @interface UserPreferences : NSObject
 
+-(NSInteger) getLowTip;
+-(NSInteger) getMediumTip;
+-(NSInteger) getHighTip;
+-(void) setLowTip: (NSInteger) lowTip;
+-(void) setMediumTip: (NSInteger) mediumTip;
+-(void) setHighTip: (NSInteger) highTip;
+-(void) commit;
+
 @end
