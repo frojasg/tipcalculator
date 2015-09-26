@@ -15,7 +15,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *mediumTipTextField;
 @property (weak, nonatomic) IBOutlet UITextField *highTipTextField;
 - (IBAction)onTap:(id)sender;
+- (IBAction)editingDidEnd:(UITextField *)sender;
+- (IBAction)editingDidBegin:(UITextField *)sender;
 - (void) updateValues;
+- (NSInteger) parseInt: (NSString*) value;
 
 @end
 
@@ -45,6 +48,10 @@
     self.lowTipTextField.text = [[NSNumber numberWithInteger:[preference getLowTip]] stringValue];
     self.mediumTipTextField.text = [[NSNumber numberWithInteger:[preference getMediumTip]] stringValue];
     self.highTipTextField.text = [[NSNumber numberWithInteger:[preference getHighTip]] stringValue];
+
+    [self editingDidEnd:self.lowTipTextField];
+    [self editingDidEnd:self.mediumTipTextField];
+    [self editingDidEnd:self.highTipTextField];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -62,9 +69,10 @@
 
 - (void)updateValues {
 
-    [preference setLowTip: [self.lowTipTextField.text integerValue]];
-    [preference setMediumTip: [self.mediumTipTextField.text integerValue]];
-    [preference setHighTip: [self.highTipTextField.text integerValue]];
+    [preference setLowTip: [self parseInt: self.lowTipTextField.text]];
+    [preference setMediumTip: [self parseInt: self.mediumTipTextField.text]];
+    [preference setHighTip: [self parseInt: self.highTipTextField.text]];
+
     [preference commit];
 }
 
@@ -74,22 +82,31 @@
     [self.view endEditing:(YES)];
 }
 
+- (IBAction)editingDidEnd:(UITextField *)sender {
+    sender.text = [NSString stringWithFormat:@"%ld %@", [self parseInt: sender.text], @"%"];
+
+}
+
+- (IBAction)editingDidBegin:(UITextField *)sender {
+    sender.text = [@([self parseInt:sender.text]) stringValue];
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-
-    NSString *newString = [[[textField.text stringByReplacingCharactersInRange:range withString:string] componentsSeparatedByCharactersInSet:
-                            [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
-                           componentsJoinedByString:@""];
-    return [newString integerValue] <= 100;
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if ([self isPercentage: newString]) {
+        return NO;
+    } else {
+        return [self parseInt: newString] <= 100;
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL) isPercentage: (NSString*) string {
+    return[string rangeOfCharacterFromSet: [[NSCharacterSet characterSetWithCharactersInString:@"0123456789 %"] invertedSet]].location != NSNotFound;
 }
-*/
+
+- (NSInteger) parseInt: (NSString*) value {
+    NSString *cleanedString = [[value componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]] componentsJoinedByString:@""];
+    return [cleanedString integerValue];
+}
 
 @end
