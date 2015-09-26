@@ -78,9 +78,11 @@
     
     float tipAmount = billAmount * [self getTipPercentage];
     float totalAmount = tipAmount + billAmount;
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
     
-    self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", tipAmount];
-    self.totalLabel.text = [NSString stringWithFormat: @"$%.2f", totalAmount];
+    self.tipLabel.text = [numberFormatter stringFromNumber:@(tipAmount)];
+    self.totalLabel.text = [numberFormatter stringFromNumber: @(totalAmount)];
     
 }
 
