@@ -27,6 +27,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"this is beig call");
+    preference = [[UserPreferences alloc] init];
+    self.lowTipTextField.delegate = self;
+    self.mediumTipTextField.delegate = self;
+    self.highTipTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +72,14 @@
     NSLog(@"tap!");
     [self updateValues];
     [self.view endEditing:(YES)];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
+    NSString *newString = [[[textField.text stringByReplacingCharactersInRange:range withString:string] componentsSeparatedByCharactersInSet:
+                            [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+                           componentsJoinedByString:@""];
+    return [newString integerValue] <= 100;
 }
 
 /*
