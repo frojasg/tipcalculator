@@ -32,12 +32,15 @@
     self.title = @"Tip Caculator";
     [self.billTextField becomeFirstResponder];
     preference = [UserPreferences new];
-    // Do any additional setup after loading the view from its nib.
+    self.tipController.selectedSegmentIndex = [preference getTipIndex];
+    NSNumber* billAmount = [preference getBillAmount];
+    if (billAmount > 0) {
+        self.billTextField.text = [billAmount stringValue];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
@@ -75,12 +78,12 @@
 
 - (void) updateValues {
     float billAmount = [self.billTextField.text floatValue];
-    
     float tipAmount = billAmount * [self getTipPercentage];
     float totalAmount = tipAmount + billAmount;
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
     
+    [preference setBillAmount:@(billAmount)];
     self.tipLabel.text = [numberFormatter stringFromNumber:@(tipAmount)];
     self.totalLabel.text = [numberFormatter stringFromNumber: @(totalAmount)];
     
@@ -88,6 +91,7 @@
 
 - (float) getTipPercentage {
     NSArray *tipValues = @[@([preference getLowTip]), @([preference getMediumTip]), @([preference getHighTip])];
+    [preference setTipIndex: self.tipController.selectedSegmentIndex];
     return [tipValues[self.tipController.selectedSegmentIndex] floatValue]/100;
 }
 

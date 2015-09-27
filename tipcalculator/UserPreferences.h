@@ -13,9 +13,13 @@
 -(NSInteger) getLowTip;
 -(NSInteger) getMediumTip;
 -(NSInteger) getHighTip;
+-(NSInteger) getTipIndex;
+-(NSNumber*) getBillAmount;
 -(void) setLowTip: (NSInteger) lowTip;
 -(void) setMediumTip: (NSInteger) mediumTip;
 -(void) setHighTip: (NSInteger) highTip;
+-(void) setTipIndex: (NSInteger) index;
+-(void) setBillAmount: (NSNumber*) amount;
 -(void) commit;
 
 @end

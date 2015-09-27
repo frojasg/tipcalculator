@@ -10,48 +10,73 @@
 
 @implementation UserPreferences
 {
-    NSUserDefaults *standardUserDefaults;
+    NSUserDefaults *defaults;
 }
 
 - (id) init {
     self = [super init];
     if (self)
     {
-        standardUserDefaults = [NSUserDefaults standardUserDefaults];
+        defaults = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
 
 - (NSInteger) getLowTip {
     NSInteger val;
-    val = [standardUserDefaults integerForKey:@"lowTipValue"];
+    val = [defaults integerForKey:@"lowTipValue"];
     return val == 0 ? 10 : val;
 }
 
 - (NSInteger) getMediumTip {
     NSInteger val;
-    val = [standardUserDefaults integerForKey:@"mediumTipValue"];
+    val = [defaults integerForKey:@"mediumTipValue"];
     return val == 0 ? 15 : val;
 }
 
 - (NSInteger) getHighTip {
     NSInteger val;
-    val = [standardUserDefaults integerForKey:@"highTipValue"];
+    val = [defaults integerForKey:@"highTipValue"];
     return val == 0 ? 15 : val;
 }
 
+- (NSInteger) getTipIndex {
+    NSInteger val;
+    val = [defaults integerForKey:@"tipIndex"];
+    return val;
+}
+
+- (NSNumber*) getBillAmount {
+    float val;
+    val = [defaults floatForKey:@"billAmount"];
+    NSDate * expiresAt = [defaults objectForKey:@"billingExpiresAt"];
+    if ([expiresAt timeIntervalSinceNow] < 0) {
+        val = 0;
+    }
+    return @(val);
+}
+
 -(void) setLowTip: (NSInteger) lowTip {
-    [standardUserDefaults setInteger: lowTip forKey: @"lowTipValue"];
+    [defaults setInteger: lowTip forKey: @"lowTipValue"];
 }
 -(void) setMediumTip: (NSInteger) mediumTip {
-    [standardUserDefaults setInteger: mediumTip forKey: @"mediumTipValue"];
+    [defaults setInteger: mediumTip forKey: @"mediumTipValue"];
 }
 -(void) setHighTip: (NSInteger) highTip {
-    [standardUserDefaults setInteger: highTip forKey: @"highTipValue"];
+    [defaults setInteger: highTip forKey: @"highTipValue"];
+}
+-(void) setTipIndex: (NSInteger) index {
+    [defaults setInteger: index forKey: @"tipIndex"];
+}
+-(void) setBillAmount:(NSNumber *) amount {
+    NSDate *currentDate = [NSDate date];
+    NSDate *expiresAt = [currentDate dateByAddingTimeInterval:(60*1)];
+    [defaults setObject:expiresAt forKey: @"billingExpiresAt"];
+    [defaults setFloat:[amount floatValue] forKey:@"billAmount"];
 }
 
 -(void) commit {
-    [standardUserDefaults synchronize];
+    [defaults synchronize];
 }
 
 

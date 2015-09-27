@@ -30,7 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"this is beig call");
     preference = [[UserPreferences alloc] init];
     self.lowTipTextField.delegate = self;
     self.mediumTipTextField.delegate = self;
@@ -43,7 +42,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"view will appear");
 
     self.lowTipTextField.text = [[NSNumber numberWithInteger:[preference getLowTip]] stringValue];
     self.mediumTipTextField.text = [[NSNumber numberWithInteger:[preference getMediumTip]] stringValue];
