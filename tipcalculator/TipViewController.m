@@ -25,6 +25,7 @@
 @implementation TipViewController
 {
     UserPreferences *preference;
+    NSNumberFormatter *numberFormatter;
 }
 
 
@@ -33,12 +34,15 @@
     self.title = @"Tip Caculator";
     [self.billTextField becomeFirstResponder];
     preference = [UserPreferences new];
+    numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
     self.tipController.selectedSegmentIndex = [preference getTipIndex];
     NSNumber* billAmount = [preference getBillAmount];
     if ([billAmount doubleValue] > 0) {
         self.billTextField.text = [billAmount stringValue];
     } else {
         self.billTextField.text = @"";
+        self.billTextField.placeholder = [numberFormatter stringFromNumber:@(0)];
     }
 }
 
@@ -83,8 +87,6 @@
     float billAmount = [self.billTextField.text floatValue];
     float tipAmount = billAmount * [self getTipPercentage];
     float totalAmount = tipAmount + billAmount;
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
     
     [preference setBillAmount:@(billAmount)];
     self.tipLabel.text = [numberFormatter stringFromNumber:@(tipAmount)];
