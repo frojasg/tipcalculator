@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *billTextField;
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UIView *resultView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipController;
 - (IBAction)onUpdate:(id)sender;
 - (void) updateValues;
@@ -34,8 +35,10 @@
     preference = [UserPreferences new];
     self.tipController.selectedSegmentIndex = [preference getTipIndex];
     NSNumber* billAmount = [preference getBillAmount];
-    if (billAmount > 0) {
+    if ([billAmount doubleValue] > 0) {
         self.billTextField.text = [billAmount stringValue];
+    } else {
+        self.billTextField.text = @"";
     }
 }
 
