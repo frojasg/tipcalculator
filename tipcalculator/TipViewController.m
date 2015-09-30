@@ -17,9 +17,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UIView *resultView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipController;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *billTextFieldUpperContraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *resultViewUpperConstraint;
 - (IBAction)onUpdate:(id)sender;
 - (void) updateValues;
 - (float) getTipPercentage;
+- (void) hiddeResultView;
+- (void) showResultView;
+- (void) hiddeResultViewAnimated;
+- (void) showResultViewAnimated;
 @end
 
 @implementation TipViewController
@@ -60,8 +66,50 @@
 }
 */
 
+- (void) hiddeResultViewAnimated {
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:0.5
+                          delay: 0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         [self hiddeResultView];
+                         [self.view layoutIfNeeded];
+                     }
+                     completion: nil];
+}
+
+- (void) hiddeResultView {
+    self.billTextFieldUpperContraint.constant = 100.0f;
+    self.resultViewUpperConstraint.constant = 200.0f;
+    self.tipController.alpha = 0.0f;
+    self.resultView.alpha = 0.0f;
+}
+
+- (void) showResultViewAnimated {
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:0.5
+                          delay: 0
+                        options:UIViewAnimationOptionCurveEaseIn
+                        animations:^{
+                            [self showResultView];
+                            [self.view layoutIfNeeded];
+                        }
+                        completion: nil];
+}
+- (void) showResultView {
+    self.billTextFieldUpperContraint.constant = 10.0f;
+    self.resultViewUpperConstraint.constant = 10.0f;
+    self.tipController.alpha = 1.0f;
+    self.resultView.alpha = 1.0f;
+}
+
 - (IBAction)onUpdate:(id)sender {
     [self updateValues];
+    if ([self.billTextField.text isEqualToString:@""]) {
+        [self hiddeResultViewAnimated];
+    } else {
+        [self showResultViewAnimated];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,6 +117,11 @@
     [self.tipController setTitle:[NSString stringWithFormat:@"%ld%@", [preference getLowTip], @"%"] forSegmentAtIndex: 0];
     [self.tipController setTitle:[NSString stringWithFormat:@"%ld%@", [preference getMediumTip], @"%"] forSegmentAtIndex: 1];
     [self.tipController setTitle:[NSString stringWithFormat:@"%ld%@", [preference getHighTip], @"%"] forSegmentAtIndex: 2];
+    if ([self.billTextField.text isEqualToString:@""]) {
+        [self hiddeResultView];
+    } else {
+        [self showResultView];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
