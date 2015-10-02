@@ -12,5 +12,7 @@
 @interface TipSegmentedControl : UISegmentedControl
 - (void) load: (UserPreferences*) preferences;
 - (void) willAppear;
+- (void) reload;
+- (void) save;
 - (float) getTipPercentage;
 @end

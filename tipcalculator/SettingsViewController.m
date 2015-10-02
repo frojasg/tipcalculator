@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "TipSegmentedControl.h"
 #import "UserPreferences.h"
 
 @interface SettingsViewController ()
@@ -14,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *lowTipTextField;
 @property (weak, nonatomic) IBOutlet UITextField *mediumTipTextField;
 @property (weak, nonatomic) IBOutlet UITextField *highTipTextField;
+@property (weak, nonatomic) IBOutlet TipSegmentedControl *tipControl;
 - (IBAction)onTap:(id)sender;
 - (IBAction)editingDidEnd:(UITextField *)sender;
 - (IBAction)editingDidBegin:(UITextField *)sender;
@@ -34,6 +36,7 @@
     self.lowTipTextField.delegate = self;
     self.mediumTipTextField.delegate = self;
     self.highTipTextField.delegate = self;
+    [self.tipControl load: preference];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +49,7 @@
     self.lowTipTextField.text = [[NSNumber numberWithInteger:[preference getLowTip]] stringValue];
     self.mediumTipTextField.text = [[NSNumber numberWithInteger:[preference getMediumTip]] stringValue];
     self.highTipTextField.text = [[NSNumber numberWithInteger:[preference getHighTip]] stringValue];
+    [self.tipControl reload];
 
     [self editingDidEnd:self.lowTipTextField];
     [self editingDidEnd:self.mediumTipTextField];
@@ -71,18 +75,21 @@
     [preference setMediumTip: [self parseInt: self.mediumTipTextField.text]];
     [preference setHighTip: [self parseInt: self.highTipTextField.text]];
 
+    [self.tipControl save];
+
     [preference commit];
 }
 
 - (IBAction)onTap:(id)sender {
-    NSLog(@"tap!");
     [self updateValues];
+    [self.tipControl reload];
     [self.view endEditing:(YES)];
 }
 
 - (IBAction)editingDidEnd:(UITextField *)sender {
     sender.text = [NSString stringWithFormat:@"%ld %@", [self parseInt: sender.text], @"%"];
-
+    [self updateValues];
+    [self.tipControl reload];
 }
 
 - (IBAction)editingDidBegin:(UITextField *)sender {

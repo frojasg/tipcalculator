@@ -15,18 +15,25 @@
 
 - (void) load: (UserPreferences*) userPreferences {
     preferences = userPreferences;
-    self.selectedSegmentIndex = [preferences getTipIndex];
 }
 
 - (void) willAppear {
     [self setTitle:[NSString stringWithFormat:@"%ld%@", [preferences getLowTip], @"%"] forSegmentAtIndex: 0];
     [self setTitle:[NSString stringWithFormat:@"%ld%@", [preferences getMediumTip], @"%"] forSegmentAtIndex: 1];
     [self setTitle:[NSString stringWithFormat:@"%ld%@", [preferences getHighTip], @"%"] forSegmentAtIndex: 2];
+    self.selectedSegmentIndex = [preferences getTipIndex];
 }
 - (float) getTipPercentage {
     NSArray *tipValues = @[@([preferences getLowTip]), @([preferences getMediumTip]), @([preferences getHighTip])];
-    [preferences setTipIndex: self.selectedSegmentIndex];
     return [tipValues[self.selectedSegmentIndex] floatValue]/100;
 }
+- (void) reload {
+    [self willAppear];
+}
+
+- (void) save {
+    [preferences setTipIndex: self.selectedSegmentIndex];
+}
+
 
 @end
