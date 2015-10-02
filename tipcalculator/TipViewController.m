@@ -8,6 +8,7 @@
 
 #import "TipViewController.h"
 #import "UserPreferences.h"
+#import "TipSegmentedControl.h"
 
 @interface TipViewController ()
 
@@ -16,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UIView *resultView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *tipController;
+@property (weak, nonatomic) IBOutlet TipSegmentedControl *tipController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *billTextFieldUpperContraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *resultViewUpperConstraint;
 - (IBAction)onUpdate:(id)sender;
@@ -42,7 +43,7 @@
     preference = [UserPreferences new];
     numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-    self.tipController.selectedSegmentIndex = [preference getTipIndex];
+    [self.tipController load: preference];
     NSNumber* billAmount = [preference getBillAmount];
     if ([billAmount doubleValue] > 0) {
         self.billTextField.text = [billAmount stringValue];
@@ -114,9 +115,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self updateValues];
-    [self.tipController setTitle:[NSString stringWithFormat:@"%ld%@", [preference getLowTip], @"%"] forSegmentAtIndex: 0];
-    [self.tipController setTitle:[NSString stringWithFormat:@"%ld%@", [preference getMediumTip], @"%"] forSegmentAtIndex: 1];
-    [self.tipController setTitle:[NSString stringWithFormat:@"%ld%@", [preference getHighTip], @"%"] forSegmentAtIndex: 2];
+    [self.tipController willAppear];
     if ([self.billTextField.text isEqualToString:@""]) {
         [self hiddeResultView];
     } else {
@@ -148,9 +147,7 @@
 }
 
 - (float) getTipPercentage {
-    NSArray *tipValues = @[@([preference getLowTip]), @([preference getMediumTip]), @([preference getHighTip])];
-    [preference setTipIndex: self.tipController.selectedSegmentIndex];
-    return [tipValues[self.tipController.selectedSegmentIndex] floatValue]/100;
+    return [self.tipController getTipPercentage];
 }
 
 @end

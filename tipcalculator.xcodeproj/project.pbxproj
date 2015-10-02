@@ -16,6 +16,7 @@
 		BF979D4F1BAF4F3A0030F8C8 /* tipcalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF979D4E1BAF4F3A0030F8C8 /* tipcalculatorTests.m */; };
 		BF979D5B1BAF59580030F8C8 /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF979D591BAF59580030F8C8 /* TipViewController.m */; };
 		BF979D5C1BAF59580030F8C8 /* TipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF979D5A1BAF59580030F8C8 /* TipViewController.xib */; };
+		BFD22C551BBBB1D6001BDEF6 /* TipSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD22C541BBBB1D6001BDEF6 /* TipSegmentedControl.m */; };
 		BFDC55E21BB12E0B006F57B1 /* UserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDC55E11BB12E0B006F57B1 /* UserPreferences.m */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,8 @@
 		BF979D581BAF59580030F8C8 /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
 		BF979D591BAF59580030F8C8 /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
 		BF979D5A1BAF59580030F8C8 /* TipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipViewController.xib; sourceTree = "<group>"; };
+		BFD22C531BBBB1D6001BDEF6 /* TipSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipSegmentedControl.h; sourceTree = "<group>"; };
+		BFD22C541BBBB1D6001BDEF6 /* TipSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipSegmentedControl.m; sourceTree = "<group>"; };
 		BFDC55E01BB12E0B006F57B1 /* UserPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferences.h; sourceTree = "<group>"; };
 		BFDC55E11BB12E0B006F57B1 /* UserPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferences.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +105,8 @@
 				BFDC55E11BB12E0B006F57B1 /* UserPreferences.m */,
 				BF6AE2241BB25621009AEBB0 /* SettingsViewController.h */,
 				BF6AE2251BB25621009AEBB0 /* SettingsViewController.m */,
+				BFD22C531BBBB1D6001BDEF6 /* TipSegmentedControl.h */,
+				BFD22C541BBBB1D6001BDEF6 /* TipSegmentedControl.m */,
 			);
 			path = tipcalculator;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				BFDC55E21BB12E0B006F57B1 /* UserPreferences.m in Sources */,
 				BF6AE2261BB25621009AEBB0 /* SettingsViewController.m in Sources */,
 				BF979D5B1BAF59580030F8C8 /* TipViewController.m in Sources */,
+				BFD22C551BBBB1D6001BDEF6 /* TipSegmentedControl.m in Sources */,
 				BF979D351BAF4F3A0030F8C8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
