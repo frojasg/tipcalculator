@@ -107,6 +107,7 @@
 - (IBAction)onUpdate:(id)sender {
     [self updateValues];
     if ([self.billTextField.text isEqualToString:@""]) {
+        self.billTextField.placeholder = [numberFormatter stringFromNumber:@(0)];
         [self hiddeResultViewAnimated];
     } else {
         [self showResultViewAnimated];
