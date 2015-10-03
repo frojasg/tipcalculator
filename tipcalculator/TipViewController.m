@@ -114,8 +114,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self updateValues];
     [self.tipController reload];
+    [self updateValues];
     if ([self.billTextField.text isEqualToString:@""]) {
         [self hiddeResultView];
     } else {
