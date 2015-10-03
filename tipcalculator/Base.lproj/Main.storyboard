@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oLn-yP-vWd" customClass="TipSegmentedControl">
-                                <rect key="frame" x="31" y="142" width="282" height="29"/>
+                                <rect key="frame" x="10" y="142" width="300" height="29"/>
                                 <segments>
                                     <segment title="10%"/>
                                     <segment title="15%"/>
@@ -32,14 +32,11 @@
                                 <rect key="frame" x="16" y="192" width="296" height="112"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4Z-sH-AxF">
-                                        <rect key="frame" x="210" y="10" width="43" height="21"/>
+                                        <rect key="frame" x="235" y="10" width="43" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="WK7-3u-fIf"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmN-qe-g9B">
-                                        <rect key="frame" x="117" y="68" width="163" height="44"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -55,10 +52,16 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmN-qe-g9B">
+                                        <rect key="frame" x="117" y="68" width="163" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="O4Z-sH-AxF" secondAttribute="trailing" constant="43" id="Gsd-VF-jGL"/>
+                                    <constraint firstAttribute="trailing" secondItem="O4Z-sH-AxF" secondAttribute="trailing" constant="10" id="Gsd-VF-jGL"/>
                                     <constraint firstItem="8lc-Cm-Eg6" firstAttribute="leading" secondItem="t5U-A5-6we" secondAttribute="leading" constant="8" id="K9N-bv-NM5"/>
                                     <constraint firstItem="P8p-xr-p60" firstAttribute="top" secondItem="t5U-A5-6we" secondAttribute="top" constant="8" id="WNQ-N5-1S5"/>
                                     <constraint firstAttribute="trailing" secondItem="jmN-qe-g9B" secondAttribute="trailing" constant="16" id="X1x-Z8-5Xx"/>
@@ -69,7 +72,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="$0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j8n-1S-At8">
-                                <rect key="frame" x="16" y="95" width="296" height="30"/>
+                                <rect key="frame" x="26" y="74" width="268" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                 <connections>
@@ -81,11 +84,11 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="t5U-A5-6we" firstAttribute="top" secondItem="oLn-yP-vWd" secondAttribute="bottom" constant="22" id="2s3-lY-qKj"/>
-                            <constraint firstItem="oLn-yP-vWd" firstAttribute="top" secondItem="j8n-1S-At8" secondAttribute="bottom" constant="17" id="69e-3s-PRd"/>
-                            <constraint firstAttribute="trailing" secondItem="oLn-yP-vWd" secondAttribute="trailing" constant="7" id="ORE-74-RDq"/>
+                            <constraint firstItem="oLn-yP-vWd" firstAttribute="top" secondItem="j8n-1S-At8" secondAttribute="bottom" constant="20" id="69e-3s-PRd"/>
+                            <constraint firstAttribute="trailing" secondItem="oLn-yP-vWd" secondAttribute="trailing" constant="10" id="ORE-74-RDq"/>
                             <constraint firstItem="t5U-A5-6we" firstAttribute="leading" secondItem="Naw-JU-N1k" secondAttribute="leadingMargin" id="Ua7-Cg-czK"/>
-                            <constraint firstItem="oLn-yP-vWd" firstAttribute="leading" secondItem="Naw-JU-N1k" secondAttribute="leading" constant="31" id="ayU-Cx-q27"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="t5U-A5-6we" secondAttribute="trailing" constant="-8" id="nZS-pg-bhx"/>
+                            <constraint firstItem="oLn-yP-vWd" firstAttribute="leading" secondItem="Naw-JU-N1k" secondAttribute="leading" constant="10" id="ayU-Cx-q27"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t5U-A5-6we" secondAttribute="trailing" id="nZS-pg-bhx"/>
                             <constraint firstItem="j8n-1S-At8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="oSJ-Fm-tvz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j8n-1S-At8" secondAttribute="trailing" constant="10" id="v9J-Wa-OVM"/>
                             <constraint firstItem="j8n-1S-At8" firstAttribute="leading" secondItem="Naw-JU-N1k" secondAttribute="leadingMargin" constant="10" id="zQC-2U-PeA"/>
@@ -324,7 +327,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="48U-cb-cqd" customClass="TipSegmentedControl">
-                                                    <rect key="frame" x="8" y="7" width="304" height="29"/>
+                                                    <rect key="frame" x="8" y="8" width="304" height="29"/>
                                                     <segments>
                                                         <segment title="15%"/>
                                                         <segment title="18%"/>
@@ -336,7 +339,9 @@
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="48U-cb-cqd" secondAttribute="bottom" constant="-1" id="QFT-lD-Odo"/>
                                                 <constraint firstItem="48U-cb-cqd" firstAttribute="leading" secondItem="2uc-eO-QKl" secondAttribute="leadingMargin" id="Ten-0N-woo"/>
+                                                <constraint firstItem="48U-cb-cqd" firstAttribute="top" secondItem="2uc-eO-QKl" secondAttribute="topMargin" id="VzM-pJ-HWP"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="48U-cb-cqd" secondAttribute="trailing" id="hSx-d0-ZMG"/>
                                             </constraints>
                                         </tableViewCellContentView>
